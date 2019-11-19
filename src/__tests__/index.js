@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, fireEvent } from 'react-testing-library';
-import Tooltip from '../index';
+import Example from '../index';
 
 const idProp = 'nuggie-tooltip-default';
 const text = 'Hey There';
@@ -9,19 +9,19 @@ const children = 'Hover over me';
 afterEach(cleanup);
 
 test('renders the children properly', () => {
-  const App = () => <Tooltip tooltipRender={text}>{children}</Tooltip>;
+  const App = () => <Example tooltipRender={text}>{children}</Example>;
   const { getByText } = render(<App />);
   expect(getByText(children).innerHTML).toBe(children);
 });
 
 test('does not render tooltip initially', () => {
-  const App = () => <Tooltip tooltipRender={text}>{children}</Tooltip>;
+  const App = () => <Example tooltipRender={text}>{children}</Example>;
   const { getByTestId } = render(<App />);
   expect(getByTestId(idProp).innerHTML).toBe('');
 });
 
 test('renders tooltip on mouseenter and hides on mouseleave', () => {
-  const App = () => <Tooltip tooltipRender={text}>{children}</Tooltip>;
+  const App = () => <Example tooltipRender={text}>{children}</Example>;
   const { getByText, getByTestId } = render(<App />);
   fireEvent(
     getByText(children),
@@ -40,7 +40,7 @@ test('renders tooltip on mouseenter and hides on mouseleave', () => {
 });
 
 test('renders tooltip on focus and hides on blur', () => {
-  const App = () => <Tooltip tooltipRender={text}>{children}</Tooltip>;
+  const App = () => <Example tooltipRender={text}>{children}</Example>;
   const { getByText, getByTestId } = render(<App />);
   fireEvent(
     getByText(children),

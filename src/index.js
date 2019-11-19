@@ -1,31 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TooltipWrapper from './tooltipWrapper';
 
-const Tooltip = props => {
-  const { idProp, children, tooltipRender, defaultDisplay } = props;
+const Example = props => {
+  const { sample } = props;
 
   return (
     <React.Fragment>
-      <TooltipWrapper idProp={idProp} tooltipRender={tooltipRender} defaultDisplay={defaultDisplay}>
-        {children}
-      </TooltipWrapper>
+      <div sample={sample}>Test</div>
     </React.Fragment>
   );
 };
 
-Tooltip.propTypes = {
-  idProp: PropTypes.string,
-  defaultDisplay: PropTypes.bool,
-  children: PropTypes.node,
-  tooltipRender: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+Example.propTypes = {
+  sample: PropTypes.string,
 };
 
-Tooltip.defaultProps = {
-  idProp: 'nuggie-tooltip-default',
-  defaultDisplay: false,
-  children: null,
-  tooltipRender: null,
+Example.defaultProps = {
+  sample: null,
 };
 
-export default Tooltip;
+export default Example;
