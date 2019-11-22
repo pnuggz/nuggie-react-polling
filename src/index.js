@@ -1,22 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Example = props => {
-  const { sample } = props;
+import UsePolling from "./usePolling"
 
-  return (
-    <React.Fragment>
-      <div sample={sample}>Test</div>
-    </React.Fragment>
-  );
+const propTypes = {
+  model: PropTypes.func.isRequired,
+  interval: PropTypes.number,
+  retryCount: PropTypes.number,
+  onSuccess: PropTypes.func.isRequired,
+  onFailure: PropTypes.func
+}
+
+const defaultProps = {
+  interval: 3000,
+  retryCount: 0,
+  onFailure: () => { }
+}
+
+const ModelPolling = props => {
+  const { model: model, interval: interval, retryCount: retryCount, onSuccess: onSuccess, onFailure: onFailure } = props;
+  return UsePolling({ model: model, interval: interval, retryCount: retryCount, onSuccess: onSuccess, onFailure: onFailure })
 };
 
-Example.propTypes = {
-  sample: PropTypes.string,
-};
+ModelPolling.propTypes = propTypes
+ModelPolling.defaultProps = defaultProps
 
-Example.defaultProps = {
-  sample: null,
-};
-
-export default Example;
+export default ModelPolling;
